@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
+import Developer from './components/Developer';
+import AddDeveloper from './components/AddDeveloper';
 
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      text: '',
+        developers : []
     }
   }
 
 
-  handleChange = (e) => {
-    let text = e.target.value;
-    this.setState({
-      text : text
-    })
+
+  deleteDeveloper = (id) => {
+    let developers = this.state.developers.filter(developer => {
+      return developer.id !== id
+    });
+
+    this.setState({developers})
   }
 
-  handleClick = (e) => {
-    document.getElementById('key').innerHTML = this.state.text
+  addDeveloper = (developer) => {
+    developer.id = Math.random();
+    let developers = [...this.state.developers, developer]
+    this.setState({developers})
   }
+  
 
   render() {
     return (
-      <div className="App">
-        <input type='text' onChange = {this.handleChange}/>
-        <button onClick = {this.handleClick} >Click Me</button>
-        <p id = 'key'></p>
+      <div>
+        <h1 className="center">List of Developers</h1>
+        <Developer developers = {this.state.developers} deleteDeveloper = {this.deleteDeveloper}></Developer>
+        <AddDeveloper addDeveloper = {this.addDeveloper}></AddDeveloper>
       </div>
     );
   }
-}
+} 
 export default App;
