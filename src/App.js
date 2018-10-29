@@ -1,39 +1,51 @@
 import React, { Component } from 'react';
-import Developer from './components/Developer';
-import AddDeveloper from './components/AddDeveloper';
+
 
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-        developers : []
+      count : 0
     }
   }
 
 
 
-  deleteDeveloper = (id) => {
-    let developers = this.state.developers.filter(developer => {
-      return developer.id !== id
-    });
-
-    this.setState({developers})
+  incrementCount = (e) => {
+    let count = this.state.count + 1
+    this.setState({count})
   }
 
-  addDeveloper = (developer) => {
-    developer.id = Math.random();
-    let developers = [...this.state.developers, developer]
-    this.setState({developers})
+  decrementCount = (e) => {
+    let count = this.state.count -1
+    this.setState({count})
+  }
+
+  resetCount = (e) => {
+    this.setState({
+      count : 0
+    })
+  }
+
+  componentDidUpdate(){
+    console.log(this.state.count)
   }
   
 
   render() {
     return (
       <div>
-        <h1 className="center">List of Developers</h1>
-        <Developer developers = {this.state.developers} deleteDeveloper = {this.deleteDeveloper}></Developer>
-        <AddDeveloper addDeveloper = {this.addDeveloper}></AddDeveloper>
+        <p>{this.state.count}</p>
+        <button onClick = {this.incrementCount}>
+          INCREMENT COUNT
+        </button>
+        <button onClick = {this.decrementCount}>
+          DECREMENT COUNT
+        </button>
+        <button onClick = {this.resetCount}>
+          RESET COUNT
+        </button>
       </div>
     );
   }
