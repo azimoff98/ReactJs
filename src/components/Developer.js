@@ -12,7 +12,7 @@ const Developer = ({developers, deleteDeveloper}) => {
                 <div>Name: { developer.name }</div>
                 <div>Language: { developer.langauge }</div>
                 <div>Salary: { developer.salary }</div>
-                <button onClick={() => {deleteDeveloper(developer.id)}}>Delete ninja</button>
+                <button onClick={() => {deleteDeveloper(developer.id)}}>Delete Developer</button>
                 </div>
             )
             })
