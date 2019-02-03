@@ -1,6 +1,7 @@
 import React from 'react';
+import Rainbow from '../hoc/Rainbow'
 
-const Contacts = () => {
+const Contacts = (props) => {
     return(
         <div className="container">
             <h4 className="center">Contacs</h4>
@@ -15,4 +16,4 @@ const Contacts = () => {
     )
 }
 
-export default Contacts
+export default Rainbow(Contacts);
