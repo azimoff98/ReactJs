@@ -3,7 +3,8 @@ import About from './components/About';
 import Home from './components/Home';
 import Contacts from './components/Contacts';
 import Navbar from './components/Navbar';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Post from './components/Post';
 
 class App extends Component {
   render() {
@@ -11,9 +12,12 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navbar/>
-          <Route path = '/home' component={Home}/>
-          <Route path = '/about' component={About}/>
-          <Route path = '/contacts' component={Contacts}/>
+            <Switch>
+              <Route path = '/home' component={Home}/>
+              <Route path = '/about' component={About}/>
+              <Route path = '/contacts' component={Contacts}/>
+              <Route path = '/:post_id' component = {Post}/>
+            </Switch>
        </div>
       </BrowserRouter>
       );
